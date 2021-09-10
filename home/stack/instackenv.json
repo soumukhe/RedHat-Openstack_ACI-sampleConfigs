@@ -7,7 +7,7 @@
       ],
       "pm_user": "admin",
       "pm_password": "password",
-      "pm_addr": "10.0.140.69",
+      "pm_addr": "192.168.24.20",
       "pm_port": "6231",
       "name": "overcloud-controller-0"
     },
@@ -18,7 +18,7 @@
       ],
       "pm_user": "admin",
       "pm_password": "password",
-      "pm_addr": "10.0.140.69",
+      "pm_addr": "192.168.24.20",
       "pm_port": "6232",
       "name": "overcloud-compute-0"
     },
@@ -29,7 +29,7 @@
       ],
       "pm_user": "admin",
       "pm_password": "password",
-      "pm_addr": "10.0.140.69",
+      "pm_addr": "192.168.24.20",
       "pm_port": "6233",
       "name": "overcloud-compute-1"
     }
