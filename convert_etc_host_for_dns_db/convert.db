@@ -1,0 +1,10 @@
+#!/bin/bash
+cat etc.hosts.txt | awk '{print $1}'   > ip.txt                                       # 1st column is ip, extracted
+cat etc.hosts.txt | awk '{print $2}'  > name.txt                                      # 2nd column is host, extracted
+sed -i  's/.osp.com//g' name.txt                                                    # get rid of ".osp.com"
+paste name.txt ip.txt > combined.txt                                                # combine each lines of  ip.txt and mane.txt together
+grep -v "\.localdomain" combined.txt > tempfile && mv tempfile combined.txt         #  get rid of all lines that has "localdomain"
+grep "\S" combined.txt > tempfile && mv tempfile combined.txt                       # get rid of blank lines
+awk '$2="IN  A   " $2' combined.txt > db.txt                                              #  add  "IN    A" on colum 2
+cat db.txt | column -t  >  tempfile && mv tempfile db.txt                           # arrange columns nicely
+rm ip.txt name.txt combined.txt                                                     # get rid of temporary files

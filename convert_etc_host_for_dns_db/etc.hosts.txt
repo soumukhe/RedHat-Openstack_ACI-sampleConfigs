@@ -1,0 +1,23 @@
+192.168.24.8  overcloud.ctlplane.localdomain
+30.30.30.72  overcloud.storage.localdomain
+40.40.40.28  overcloud.storagemgmt.localdomain
+100.100.102.149  overcloud.internalapi.localdomain
+100.100.160.230  overcloud.localdomain
+100.100.102.19 overcloud-controller-0.osp.com overcloud-controller-0
+30.30.30.211 overcloud-controller-0.storage.osp.com overcloud-controller-0.storage
+40.40.40.38 overcloud-controller-0.storagemgmt.osp.com overcloud-controller-0.storagemgmt
+100.100.102.19 overcloud-controller-0.internalapi.osp.com overcloud-controller-0.internalapi
+100.100.103.68 overcloud-controller-0.tenant.osp.com overcloud-controller-0.tenant
+100.100.160.35 overcloud-controller-0.external.osp.com overcloud-controller-0.external
+192.168.24.6 overcloud-controller-0.ctlplane.osp.com overcloud-controller-0.ctlplane
+
+100.100.102.83 overcloud-compute-0.osp.com overcloud-compute-0
+30.30.30.87 overcloud-compute-0.storage.osp.com overcloud-compute-0.storage
+100.100.102.83 overcloud-compute-0.internalapi.osp.com overcloud-compute-0.internalapi
+100.100.103.136 overcloud-compute-0.tenant.osp.com overcloud-compute-0.tenant
+192.168.24.18 overcloud-compute-0.ctlplane.osp.com overcloud-compute-0.ctlplane
+100.100.102.59 overcloud-compute-1.osp.com overcloud-compute-1
+30.30.30.188 overcloud-compute-1.storage.osp.com overcloud-compute-1.storage
+100.100.102.59 overcloud-compute-1.internalapi.osp.com overcloud-compute-1.internalapi
+100.100.103.230 overcloud-compute-1.tenant.osp.com overcloud-compute-1.tenant
+192.168.24.11 overcloud-compute-1.ctlplane.osp.com overcloud-compute-1.ctlplane
