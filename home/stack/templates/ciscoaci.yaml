@@ -1,0 +1,72 @@
+# A Heat environment file which can be used to enable a
+# a Neutron Cisco Aci backend on the controller, configured via puppet
+resource_registry:
+
+  #customConfigs
+  OS::TripleO::Controller::Net::SoftwareConfig: /home/stack/templates/custom-nics/controller.yaml
+  OS::TripleO::Compute::Net::SoftwareConfig: /home/stack/templates/custom-nics/compute.yaml
+  OS::TripleO::BlockStorage::Net::SoftwareConfig: /home/stack/templates/custom-nics/cinder-storage.yaml
+  OS::TripleO::ObjectStorage::Net::SoftwareConfig: /home/stack/templates/custom-nics/swift-storage.yaml
+  OS::TripleO::CephStorage::Net::SoftwareConfig: /home/stack/templates/custom-nics/ceph-storage.yaml
+
+  #controller
+  OS::TripleO::ControllerExtraConfigPre: /opt/ciscoaci-tripleo-heat-templates/nodepre.yaml
+  OS::TripleO::Services::NeutronL3Agent: OS::Heat::None
+  OS::TripleO::Services::NeutronOvsAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_neutron_opflex.yaml
+  OS::TripleO::Docker::NeutronMl2PluginBase: /opt/ciscoaci-tripleo-heat-templates/puppet/services/ciscoaci-ml2.yaml
+  OS::TripleO::Services::CiscoAciAIM: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_aciaim.yaml
+
+  #compute
+  OS::TripleO::ComputeExtraConfigPre: /opt/ciscoaci-tripleo-heat-templates/nodepre.yaml
+  OS::TripleO::Services::ComputeNeutronOvsAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_neutron_opflex.yaml
+  OS::TripleO::Services::ComputeNeutronCorePlugin: /opt/ciscoaci-tripleo-heat-templates/puppet/services/ciscoaci_compute.yaml
+  OS::TripleO::Services::ComputeNeutronMetadataAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/compute-neutron-metadata.yaml
+
+
+  OS::TripleO::Services::CiscoAciLldp: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_lldp.yaml
+  OS::TripleO::Services::CiscoAciOpflexAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_opflex.yaml
+
+
+parameter_defaults:
+    NeutronSfcDriver: 'aim'
+    NeutronFcDriver: 'aim'
+    CloudDomain: 'osp.com'
+    DnsSearchDomains: 'osp.com'
+    DnsServers: ["192.168.24.20"]
+    AdminPassword: 'SuperSekret'
+    EC2MetadataIp: 192.168.24.1
+    ControlPlaneDefaultRoute: 192.168.24.1   
+    DockerInsecureRegistryAddress: 192.168.24.1:8787
+    OvercloudControllerFlavor: control
+    OvercloudComputeFlavor: compute
+    ExternalNetworkVlanID: 160
+    InternalApiNetworkVlanID: 102
+    StorageNetworkVlanID: 30
+    StorageMgmtNetworkVlanID: 40
+    TenantNetworkVlanID: 103
+    NeutronCorePlugin: 'ml2plus'
+    #NeutronPluginMl2PuppetTags: 'neutron_plugin_ml2,neutron_plugin_cisco_aci,neutron_sfc_service_config'
+    NeutronServicePlugins: 'group_policy,ncp,apic_aim_l3'
+    NeutronEnableIsolatedMetadata: true
+    NeutronEnableForceMetadata: true
+    EnablePackageInstall: true
+    ACIScopeNames: true
+    ACIYumRepo: http://192.168.24.1/acirepo
+    ACIApicHosts: 10.0.0.58
+    ACIApicUsername: soumukhe
+    ACIApicPassword: SuperSekret
+    ACIApicSystemId: osp13-Director
+    ACIMechanismDrivers: 'apic_aim'
+    ACIApicEntityProfile: RH-Director
+    ACIApicInfraVlan: 3967
+    ACIApicInfraSubnetGateway: 10.8.0.30
+    ACIApicInfraAnycastAddr: 10.8.0.32
+    ACIOpflexUplinkInterface: ens192
+    ACIOpflexEncapMode: vxlan
+    AciKeystoneNotificationPurge: True
+    HeatEnginePluginDirs: /usr/lib64/heat,/usr/lib/heat,/usr/local/lib/heat,/usr/local/lib64/heat,/usr/lib/python2.7/site-packages/gbpautomation/heat
+    NeutronGlobalPhysnetMtu: 8950
+    ACIOpflexInterfaceType: ovs
+    ACIOpflexInterfaceMTU: 9000
+    NtpServer: ['192.168.24.20']
+    NeutronPluginMl2PuppetTags: 'neutron_plugin_ml2,neutron_plugin_cisco_aci,neutron_sfc_service_config'

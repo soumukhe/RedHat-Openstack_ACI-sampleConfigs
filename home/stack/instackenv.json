@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "00:50:56:a9:0c:22"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "10.0.140.69",
+      "pm_port": "6231",
+      "name": "overcloud-controller-0"
+    },
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "00:50:56:a9:d6:29"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "10.0.140.69",
+      "pm_port": "6232",
+      "name": "overcloud-compute-0"
+    },
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "00:50:56:a9:a6:d6"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "10.0.140.69",
+      "pm_port": "6233",
+      "name": "overcloud-compute-1"
+    }
+  ]
+}
