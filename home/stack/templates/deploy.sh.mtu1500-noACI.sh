@@ -7,5 +7,6 @@ time openstack overcloud deploy --templates \
 -e /usr/share/openstack-tripleo-heat-templates/environments/network-environment.yaml \
 -e /usr/share/openstack-tripleo-heat-templates/environments/net-single-nic-with-vlans.yaml \
 --ntp-server 192.168.24.20 \
+--libvirt-type qemu \
 --debug
 

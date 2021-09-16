@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 source ~/stackrc
 
 time openstack overcloud deploy --templates \
@@ -12,5 +11,6 @@ time openstack overcloud deploy --templates \
 -e  /home/stack/templates/ciscoaci.yaml \
 -e /home/stack/templates/ciscoaci_containers.yaml \
 --ntp-server 192.168.24.20 \
+--libvirt-type qemu \
 --debug
 

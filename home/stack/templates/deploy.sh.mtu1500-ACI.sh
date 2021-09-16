@@ -13,5 +13,6 @@ time openstack overcloud deploy --templates \
 -e  /home/stack/templates/ciscoaci.1500.yaml \
 -e /home/stack/templates/ciscoaci_containers.yaml \
 --ntp-server 192.168.24.20 \
+--libvirt-type qemu \
 --debug
 
